@@ -16,13 +16,10 @@ def index(request):
         'price_choices': price_choices
     }
 
-<<<<<<< HEAD
+
     return render(request, 'main/HTML/index-5.html', context)
-=======
-    return render(request, 'main/index-5.html', context)
->>>>>>> b4bc9317216aedded2405153cac40f992ea8af53
 
-
+    
 def about(request):
     # Get all realtors
     realtors = Realtor.objects.order_by('-hire_date')
