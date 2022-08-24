@@ -1,3 +1,4 @@
+
 bedroom_choices = {
   '1':1,
   '2':2,
@@ -10,6 +11,16 @@ bedroom_choices = {
   '9':9,
   '10':10
   }
+
+
+bathroom_choices = {
+  '1':1,
+  '2':2,
+  '3':3,
+  '4':4
+  }
+
+
 
 price_choices = {
   '100000':'$100,000',

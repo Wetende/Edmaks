@@ -1,6 +1,16 @@
+from email.policy import default
+from secrets import choice
 from django.db import models
 from datetime import datetime
 from realtors.models import Realtor
+
+property_type = [
+  ('Apartment',  'Apartment'),
+  ('Office', 'Office'),
+  ('House', 'House'),
+  ('Villa', 'Villa'),
+  ('Others', 'Others')
+]
 
 class Listing(models.Model):
   realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING)
@@ -10,6 +20,7 @@ class Listing(models.Model):
   state = models.CharField(max_length=100)
   zipcode = models.CharField(max_length=20)
   description = models.TextField(blank=True)
+  p_type = models.CharField(max_length=100, choices=property_type, default='Office', blank=True, null=True)
   price = models.IntegerField()
   bedrooms = models.IntegerField()
   bathrooms = models.DecimalField(max_digits=2, decimal_places=1)
