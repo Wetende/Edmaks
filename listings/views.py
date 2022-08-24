@@ -24,7 +24,7 @@ def listing(request, listing_id):
     'listing': listing
   }
 
-  return render(request, 'listings/listing.html', context)
+  return render(request, 'main/properties-details.html', context)
 
 def search(request):
   queryset_list = Listing.objects.order_by('-list_date')

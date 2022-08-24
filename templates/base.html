@@ -1,38 +1,79 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zxx">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{% static 'css/all.css' %}">
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-  <!-- Custom -->
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <!-- Lightbox -->
-  <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
-
-  <title>BT Real Estate {% block title %}{% endblock %}</title>
-</head>
-
-<body>
-  <!-- Top Bar -->
-  {% include 'partials/_topbar.html' %}
-  <!-- NavBar -->
-  {% include 'partials/_navbar.html' %}
-    <!-- Main Content -->
-  {% block content %} {% endblock %}
-  <!-- Footer -->
-  {% include 'partials/_footer.html' %}
+    <title>XERO - Real Estate HTML Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <!-- External CSS libraries -->
   
+    <link  rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link  rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link  rel="stylesheet" href="{% static 'assets/css/jquery.selectBox.css' %}">
+    <link  rel="stylesheet" href="{% static 'assets/css/dropzone.css' %}" >
+    <link  rel="stylesheet" href="{% static 'assets/css/rangeslider.css' %}">
+    <link  rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link  rel="stylesheet" href="{% static 'assets/css/leaflet.css' %}">
+    <link  rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link  rel="stylesheet" href="{% static 'assets/css/slick-theme.css' %}">
+    <link  rel="stylesheet" href="{% static 'assets/css/slick-theme.css' %}">
+    <link  rel="stylesheet" href="{% static 'assets/css/map.css' %}">
+    <link  rel="stylesheet" href="{% static 'assets/css/jquery.mCustomScrollbar.css' %}">
+    <link  rel="stylesheet" href="{% static 'assets/fonts/font-awesome/css/font-awesome.min.css' %}">
+    <link  rel="stylesheet" href="{% static 'assets/fonts/flaticon/font/flaticon.css' %}">
 
-  <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
-  <script src="{% static 'js/bootstrap.bundle.min.js' %} "></script>
-  <script src="{% static 'js/lightbox.min.js' %} "></script>
-  <script src="{% static 'js/main.js' %} "></script>
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon" >
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
+
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" id="style_sheet" href="{% static 'assets/css/skins/default.css' %}">
+
+</head>
+<body id="top" class="index-5 index-body">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDTWJ3Z"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="page_loader"></div>
+
+
+<!-- Main Content -->
+
+
+  {% include 'navbar.html' %}
+  {% block content %} {% endblock %}
+  {% include 'footer.html' %}
+ 
+
+<!-- External JS libraries -->
+
+<script src="{% static 'assets/js/jquery-2.2.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.selectBox.js' %}"></script>
+<script src="{% static 'assets/js/rangeslider.js' %}"></script>
+<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.filterizr.js' %}"></script>
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/backstretch.js' %}"></script>
+<script src="{% static 'assets/js/jquery.countdown.js' %}"></script>
+<script src="{% static 'assets/js/jquery.scrollUp.js' %}"></script>
+<script src="{% static 'assets/js/particles.min.js' %}"></script>
+<script src="{% static 'assets/js/typed.min.js' %}"></script>
+<script src="{% static 'assets/js/dropzone.js' %}"></script>
+<script src="{% static 'assets/js/jquery.mb.YTPlayer.js' %}"></script>
+<script src="{% static 'assets/js/leaflet.js' %}"></script>
+<script src="{% static 'assets/js/leaflet-providers.js' %}"></script>
+<script src="{% static 'assets/js/leaflet.markercluster.js' %}"></script>
+<script src="{% static 'assets/js/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/maps.js' %}"></script>
+<script src="{% static 'assets/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0N5pbJN10Y1oYFRd0MJ_v2g8W2QT74JE"></script>
+<script src="{% static 'assets/js/ie-emulation-modes-warning.js' %}"></script>
+<!-- Custom JS Script -->
+<script  src="{% static 'assets/js/app.js' %}"></script>
 </body>
 
 </html>
