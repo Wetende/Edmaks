@@ -1,52 +1,81 @@
-{% extends 'base.html' %}
 
-{% block title %} | Register Account {% endblock %}
 
 {% block content %}
-<section id="register" class="bg-light py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 mx-auto">
-          <div class="card">
-            <div class="card-header bg-primary text-white">
-              <h4>
-                <i class="fas fa-user-plus"></i> Register</h4>
-            </div>
-            <div class="card-body">
-              <!-- Alerts -->
+{% load static %}
+<title> Register Account</title>
+<link  rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+<style>
+  section{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+</style>
+
+  <section class="vh-100">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-4">
+              <h2 class=" text-center mb-3">Create an account</h2>
+
               {% include 'partials/_alerts.html' %}
               <form action="{% url 'register' %}" method="POST">
-                  {% csrf_token %}
-                  <div class="form-group">
-                      <label for="first_name">First Name</label>
-                      <input type="text" name="first_name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="last_name">Last Name</label>
-                      <input type="text" name="last_name" class="form-control" required>
-                    </div>
-                <div class="form-group">
-                  <label for="username">Username</label>
-                  <input type="text" name="username" class="form-control" required>
+                {% csrf_token %}
+
+                <div class="form-outline mb-2">
+                  <label class="form-label" for="first_name">First Name</label>
+                  <input type="text" name="first_name" class="form-control form-control-lg" />
+                 
                 </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" name="email" class="form-control" required>
+
+                <div class="form-outline mb-2">
+                  <label class="form-label" for="last_name">Last Name</label>
+                  <input type="text" name="last_name" class="form-control form-control-lg" />
+               
                 </div>
-                <div class="form-group">
-                  <label for="password2">Password</label>
-                  <input type="password" name="password" class="form-control" required>
+
+                <div class="form-outline mb-2">
+                  <label class="form-label" for="username">Username</label>
+                  <input type="text" name="username" class="form-control form-control-lg" />
+                 
                 </div>
-                <div class="form-group">
-                  <label for="password">Confirm Password</label>
-                  <input type="password" name="password2" class="form-control" required>
+
+                <div class="form-outline mb-2">
+                  <label class="form-label" for="email"> Email</label>
+                  <input type="email" name="email" class="form-control form-control-lg" />
+                  
                 </div>
-                <input type="submit" value="Register" class="btn btn-secondary btn-block">
+
+                <div class="form-outline mb-2">
+                  <label class="form-label" for="password">Password</label>
+                  <input type="password" name="password" class="form-control form-control-lg" />
+                 
+                </div>
+
+                <div class="form-outline mb-2">
+                  <label class="form-label" for="password2">Repeat password</label>
+                  <input type="password" name="password2" class="form-control form-control-lg" />
+                
+                </div>
+
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body bg-primary" >Register</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="{% url 'login' %}"
+                    class="fw-bold text-body"><u>Login here</u></a></p>
+
               </form>
+
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
   {% endblock %}
