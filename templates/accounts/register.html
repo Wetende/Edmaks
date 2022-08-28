@@ -8,6 +8,7 @@
 <style>
   section{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: small;
   }
 </style>
 
@@ -18,7 +19,7 @@
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-4">
-              <h2 class=" text-center mb-3">Create an account</h2>
+              <h3 class=" text-center mb-3">Create an account</h3>
 
               {% include 'partials/_alerts.html' %}
               <form action="{% url 'register' %}" method="POST">
@@ -26,44 +27,44 @@
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="first_name">First Name</label>
-                  <input type="text" name="first_name" class="form-control form-control-lg" />
+                  <input type="text" name="first_name" class="form-control form-control-sm " />
                  
                 </div>
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="last_name">Last Name</label>
-                  <input type="text" name="last_name" class="form-control form-control-lg" />
+                  <input type="text" name="last_name" class="form-control form-control-sm" />
                
                 </div>
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="username">Username</label>
-                  <input type="text" name="username" class="form-control form-control-lg" />
+                  <input type="text" name="username" class="form-control form-control-sm" />
                  
                 </div>
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="email"> Email</label>
-                  <input type="email" name="email" class="form-control form-control-lg" />
+                  <input type="email" name="email" class="form-control form-control-sm" />
                   
                 </div>
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="password">Password</label>
-                  <input type="password" name="password" class="form-control form-control-lg" />
+                  <input type="password" name="password" class="form-control form-control-sm" />
                  
                 </div>
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="password2">Repeat password</label>
-                  <input type="password" name="password2" class="form-control form-control-lg" />
+                  <input type="password" name="password2" class="form-control form-control-sm" />
                 
                 </div>
 
 
                 <div class="d-flex justify-content-center">
                   <button type="submit"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body bg-primary" >Register</button>
+                    class="btn btn-success btn-block btn-sm gradient-custom-4 text-body bg-primary" >Register</button>
                 </div>
 
                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="{% url 'login' %}"
