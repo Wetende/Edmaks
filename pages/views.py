@@ -33,3 +33,5 @@ def about(request):
     }
 
     return render(request, 'main/HTML/about.html', context)
+
+    
