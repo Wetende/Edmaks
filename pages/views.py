@@ -17,7 +17,7 @@ def index(request):
     }
 
 
-    return render(request, 'main/HTML/index-5.html', context)
+    return render(request, 'pages/index-5.html', context)
 
     
 def about(request):
@@ -32,4 +32,4 @@ def about(request):
         'mvp_realtors': mvp_realtors
     }
 
-    return render(request, 'main/HTML/about.html', context)
+    return render(request, 'pages/about.html', context)

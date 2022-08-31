@@ -32,9 +32,9 @@
   </section>
 
   <!-- Listings -->
-  <section id="listings" class="py-4">
-    <div class="container">
-      <div class="row">
+  <section id="listings" class="py-4 display-flex">
+    <div class="container ">
+      
         {% if listings %}
           {% for listing in listings %}
           <div class="col-md-6 col-lg-4 mb-4">
@@ -122,7 +122,7 @@
             </ul>
           {% endif %}
         </div>
-      </div>
+    
     </div>
   </section>
 {% endblock %}
