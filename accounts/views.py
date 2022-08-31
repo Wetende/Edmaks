@@ -70,9 +70,3 @@ def dashboard(request):
     'contacts': user_contacts
   }
   return render(request, 'main/HTML/index.html', context)
-
-
-def submit_property(request):
-  
-
-  return render(request, 'main/HTML/submit-property.html', )
