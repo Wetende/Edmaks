@@ -69,4 +69,10 @@ def dashboard(request):
   context = {
     'contacts': user_contacts
   }
-  return render(request, 'accounts/dashboard.html', context)
+  return render(request, 'main/HTML/index.html', context)
+
+
+def submit_property(request):
+  
+
+  return render(request, 'main/HTML/submit-property.html', )
