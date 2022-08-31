@@ -68,3 +68,8 @@ def search(request):
   }
 
   return render(request, 'listings/search.html', context)
+
+def submit(request):
+  
+
+  return render(request, 'listings/submit-property.html')
