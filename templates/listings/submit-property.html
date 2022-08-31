@@ -1,83 +1,88 @@
-{% extends 'base.html' %}
 
 
 {% block content%}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
 <!-- Sub banner start -->
-<div class="sub-banner">
-    <div class="container">
-        <div class="breadcrumb-area">
-            <h1>Submit Property</h1>
-            <ul class="breadcrumbs">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">Submit Property</li>
-            </ul>
-        </div>
-    </div>
-</div>
-<!-- Sub banner end -->
+
 
 <!-- User page start -->
-<div class="user-page submit-property content-area-7">
+ <div class="user-page submit-property content-area-7 pt-2">
     <div class="container">
         <div class="row">
            
                 <div class="search-area contact-2">
                     <div class="search-area-inner">
                         <div class="search-contents ">
-                            <form method="GET">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
                                 <h3 class="heading-3">Basic Information</h3>
                                 <div class="row mb-30">
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label>Property Title</label>
-                                            <input type="text" name="property-title" class="form-control" placeholder="Property Title">
+                                            <input type="text" name="title" class="form-control" placeholder="Property Title">
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
-                                            <label>Type</label>
-                                            <select class="selectpicker search-fields" name="Status">
-                                                <option>Apartment</option>
-                                                <option>House</option>
-                                                <option>Commercial</option>
-                                                <option>Garage</option>
-                                                <option>Lot</option>
+                                            <label>Cartegory</label>
+                                            <select class="selectpicker search-fields p-1 form-control" name="p_type">
+                                                {% for key,value in property_type.items %}
+                                                <option value="{{ key }}"
+                                                {% if key == values.prices %}
+                                                  selected
+                                                {% endif %}
+                                                >{{ value }}</option>
+                                              {% endfor %}
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label>Price</label>
-                                            <input type="text" name="price" class="form-control" placeholder="USD">
+                                            <select class="selectpicker search-fields form-control" name="price">
+                                                {% for key,value in price_choices.items %}
+                                                <option value="{{ key }}"
+                                                {% if key == values.prices %}
+                                                  selected
+                                                {% endif %}
+                                                >{{ value }}</option>
+                                              {% endfor %}
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label>Area/Location</label>
-                                            <input type="text" name="price" class="form-control" placeholder="SqFt">
+                                            <input type="text" name="area" class="form-control" placeholder="SqFt">
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label>Bedrooms</label>
-                                            <select class="selectpicker search-fields" name="Status">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
+                                            <select class="selectpicker search-fields form-control" name="bedroom">
+                                                {% for key,value in bedroom_choices.items %}
+                                                <option value="{{ key }}"
+                                                {% if key == values.bedrooms %}
+                                                  selected
+                                                {% endif %}
+                                                >{{ value }}</option>
+                                              {% endfor %}
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label>Bathroom</label>
-                                            <select class="selectpicker search-fields" name="Status">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
+                                            <select class="selectpicker search-fields form-control" name="bathroom">
+                                                {% for key,value in bathroom_choices.items %}
+                                                <option value="{{ key }}"
+                                                {% if key == values.bathrooms %}
+                                                  selected
+                                                {% endif %}
+                                                >{{ value }}</option>
+                                              {% endfor %}
                                             </select>
                                         </div>
                                     </div>
@@ -85,9 +90,11 @@
                                 <h3 class="heading-3">Property Gallery</h3>
                                 <div class="row mb-45">
                                     <div class="col-lg-12">
-                                        <div id="myDropZone" class="dropzone dropzone-design">
-                                            <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
-                                        </div>
+                                        <div class="mb-3">
+                                            <label for="formFileMultiple" class="form-label">Multiple files input</label>
+                                            <input class="form-control" name="photo" type="file" id="formFileMultiple" multiple required>
+                                          </div>
+                                          
                                     </div>
                                 </div>
                                 <h3 class="heading-3">Location</h3>
@@ -101,33 +108,27 @@
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label>City</label>
-                                            <select class="selectpicker search-fields" name="Status">
-                                                <option>Choose City</option>
-                                                <option>New York</option>
-                                                <option>Chicago</option>
-                                                <option>Queens</option>
-                                                <option>Manhattan</option>
-                                                <option>San Antonio</option>
-                                            </select>
+                                            <input type="text" name="city"  class="form-control" placeholder="City"/>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6">
+                                    <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
-                                            <label>State</label>
-                                            <select class="selectpicker search-fields" name="Status">
-                                                <option>Choose State</option>
-                                                <option>Alabama</option>
-                                                <option>California</option>
-                                                <option>Connecticut</option>
-                                                <option>Florida</option>
-                                                <option>Georgia</option>
+                                            <label>County</label>
+                                            <select class="selectpicker search-fields form-control" name="state">
+                                                {% for key,value in state_choices.items %}
+                                                <option value="{{ key }}"
+                                                {% if key == values.prices %}
+                                                  selected
+                                                {% endif %}
+                                                >{{ value }}</option>
+                                              {% endfor %}
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label>Postal Code</label>
-                                            <input type="text" name="postal-code" class="form-control" placeholder="Postal Code">
+                                            <input type="text" name="postal_code" class="form-control" placeholder="Postal Code">
                                         </div>
                                     </div>
                                 </div>
@@ -136,70 +137,16 @@
                                     <div class="col-lg-12">
                                         <div class="form-group message">
                                             <label>Detailed Information</label>
-                                            <textarea class="form-control" name="message" placeholder="Detailed Information"></textarea>
+                                            <textarea class="form-control" name="description" placeholder="Detailed Information"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="form-group">
-                                            <label>Building Age (optional)</label>
-                                            <select class="selectpicker search-fields" name="Status">
-                                                <option>0-5 Years</option>
-                                                <option>0-10 Years</option>
-                                                <option>0-15 Years</option>
-                                                <option>0-20 Years</option>
-                                                <option>0-25 Years</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="form-group">
-                                            <label>Bedrooms (optional)</label>
-                                            <select class="selectpicker search-fields" name="Status">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="form-group">
-                                            <label>Bathrooms (optional)</label>
-                                            <select class="selectpicker search-fields" name="Status">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                
                                 </div>
                                
-                                <h3 class="heading-3">Contact Details</h3>
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="form-group">
-                                            <label>Name</label>
-                                            <input type="text" name="name" class="form-control" placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="email" name="email" class="form-control" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="form-group">
-                                            <label>Phone</label>
-                                            <input type="text" name="name" class="form-control" placeholder="Phone">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <a href="#" class="btn btn-md btn-color">Preview</a>
-                                    </div>
+                            
+                                    <button type="submit" class="btn btn-primary mb-3 mt-5">Submit</button>
+
+                                  
                                 </div>
                             </form>
                         </div>
@@ -210,9 +157,13 @@
         </div>
     </div>
 </div>
-<!-- User page end -->
+<!-- User page end --> -->
+
 
 {% endblock%}
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 
 </body>
 </html>

@@ -6,11 +6,24 @@
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-7">
                 <div class="list-inline">
-                    <a href="tel:1-7X0-555-8X22"><i class="fa fa-phone"></i>+0477 85X6 552</a>
-                    <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a>
+                    <a href="tel:1-7X0-555-8X22"><i class="fa fa-phone"></i>+254 713 906 025 </a>
+                    <a href="mailto:cyprianwetende@gmail..com"><i class="fa fa-envelope"></i>Real Estate</a>
                     <a href="#" class="mr-0"><i class="fa fa-clock-o"></i>Mon - Sun: 8:00am - 6:00pm</a>
                 </div>
             </div>
+            {% if user.is_authenticated %}
+            <div class="col-lg-3 col-md-3 col-sm-5">
+                <ul class="top-social-media pull-right">
+                    <li>
+                        <a href="#">Welcome {{user.username}}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'logout' %}"  class="sign-in"><i class="fa fa-log-out"></i> Logout </a>
+                    </li>
+                </ul>
+            </div>
+            {% else %}
+
             <div class="col-lg-3 col-md-3 col-sm-5">
                 <ul class="top-social-media pull-right">
                     <li>
@@ -21,6 +34,7 @@
                     </li>
                 </ul>
             </div>
+            {% endif %}
         </div>
     </div>
 </header>
@@ -33,7 +47,7 @@
             <div class="col-12">
                 <nav class="navbar navbar-expand-lg navbar-light rounded">
                     <a class="navbar-brand logo" href="index.html">
-                        <img src="{% static 'assets/img/logos/black-logo.png' %}" alt="logo">
+                        <img src="{% static 'assets/img/cam.jpg' %}" alt="logo"/>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="fa fa-bars"></span>
@@ -93,7 +107,7 @@
                                 </a>
                             </li>
                             <li class="nav-item mt-4">
-                                <a  href="{% url 'submit' %}" class="submit-btn bg-dark">
+                                <a  href="{% url 'submit' %}" class="submit-btn bg-primary">
                                     Submit Property
                                 </a>
                             </li>

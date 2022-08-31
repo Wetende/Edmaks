@@ -9,219 +9,238 @@
 <div class="banner" id="banner">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active item-bg"> 
-                <img class="d-block w-100 h-100" src="{% static 'assets/img/favicon.jpg' %}" alt="banner">
+            <div class="carousel-item active item-bg">
+                <img class="d-block w-100 h-100" src="{% static 'assets/img/cam.jpg'%}" alt="banner">
                 <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
-                    <div class="carousel-content container-fluid b1-inner-2">
-                        <div class="t-left">
-                            <h5 data-animation="animated fadeInDown delay-05s">The Best Real Estate Deals</h5>
-                            <h1 data-animation="animated fadeInDown delay-05s">Discover <span>Modern</span> Villa</h1>
-                            <a data-animation="animated fadeInUp delay-10s" href="#" class="btn btn-lg btn-theme">More Details</a>
+                    <div class="carousel-content container b1-inner">
+                        <div class="tab-search-section">
+                            <h1>Find Your Dream Properties</h1>
+                            <div id="typed-strings">
+                                <p>Find new & featured property located in your local city.</p>
+                            </div>
+                            <h1 class="typed-text tt2">&nbsp;
+                                <span id="typed"></span>
+                            </h1>
+                            <div class="tab-box">
+                                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active show" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">Buy</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Rent</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                        <div class="search-area search-area-6">
+                                            <div class="search-area-inner">
+                                                <div class="search-contents">
+                                                    <form method="GET">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-6 col-pad2">
+                                                                <div class="form-group">
+                                                                    <input type="text" name="name" class="search-fields sf2 fc2" placeholder="Enter Keyword">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-6 col-pad2">
+                                                                <div class="form-group">
+                                                                    <select class="selectpicker search-fields" name="type">
+                                                                        <option>Property Types</option>
+                                                                        <option>Residential</option>
+                                                                        <option>Commercial</option>
+                                                                        <option>Land</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-6 col-pad2">
+                                                                <div class="form-group">
+                                                                    <select class="selectpicker search-fields" name="location">
+                                                                        <option>Location</option>
+                                                                        <option>United Kingdom</option>
+                                                                        <option>American Samoa</option>
+                                                                        <option>Belgium</option>
+                                                                        <option>Canada</option>
+                                                                        <option>Delaware</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-6 col-pad2">
+                                                                <div class="form-group">
+                                                                    <select class="selectpicker search-fields" name="make">
+                                                                        <option>Room</option>
+                                                                        <option>1</option>
+                                                                        <option>2</option>
+                                                                        <option>3</option>
+                                                                        <option>4</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-6 col-pad2 cp3">
+                                                                <div class="form-group fg2">
+                                                                    <button class="search-button btn-md btn-color">Search</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                        <div class="search-area search-area-6">
+                                            <div class="search-area-inner">
+                                                <div class="search-contents">
+                                                    <form method="GET">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-6 col-pad2">
+                                                                <div class="form-group">
+                                                                    <input type="text" name="name" class="search-fields sf2 fc2" placeholder="Enter Keyword">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-6 col-pad2">
+                                                                <div class="form-group">
+                                                                    <select class="selectpicker search-fields" name="type">
+                                                                        <option>Property Types</option>
+                                                                        <option>Residential</option>
+                                                                        <option>Commercial</option>
+                                                                        <option>Land</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-6 col-pad2">
+                                                                <div class="form-group">
+                                                                    <select class="selectpicker search-fields" name="location">
+                                                                        <option>Location</option>
+                                                                        <option>United Kingdom</option>
+                                                                        <option>American Samoa</option>
+                                                                        <option>Belgium</option>
+                                                                        <option>Canada</option>
+                                                                        <option>Delaware</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-6 col-pad2">
+                                                                <div class="form-group">
+                                                                    <select class="selectpicker search-fields" name="make">
+                                                                        <option>Room</option>
+                                                                        <option>1</option>
+                                                                        <option>2</option>
+                                                                        <option>3</option>
+                                                                        <option>4</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-6 col-pad2 cp3">
+                                                                <div class="form-group fg2">
+                                                                    <button class="search-button btn-md btn-color">Search</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item item-bg">
-                <img class="d-block w-100 h-100" src="http://placehold.it/1920x1050" alt="banner">
-                <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
-                    <div class="carousel-content container-fluid b1-inner-2">
-                        <div class="t-left">
-                            <h5 data-animation="animated fadeInDown delay-05s">The Best Real Estate Deals</h5>
-                            <h1 data-animation="animated fadeInDown delay-05s">Best <span>Place For Sell</span> Properties</h1>
-                            <a data-animation="animated fadeInUp delay-10s" href="#" class="btn btn-lg btn-theme">More Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item item-bg">
-                <img class="d-block w-100 h-100" src="http://placehold.it/1920x1050" alt="banner">
-                <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
-                    <div class="carousel-content container-fluid b1-inner-2">
-                        <div class="t-left">
-                            <h5 data-animation="animated fadeInDown delay-05s">The Best Real Estate Deals</h5>
-                            <h1 data-animation="animated fadeInDown delay-05s">Best Place For <span>Sell Properties</span></h1>
-                            <a data-animation="animated fadeInUp delay-10s" href="#" class="btn btn-lg btn-theme">More Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="btn-secton">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
         </div>
     </div>
 </div>
 <!-- banner end -->
 
-<!-- Search area start -->
-<div class="search-area" id="search-area-1">
-    <div class="container-fluid">
-        <div class="search-area-inner">
-            <div class="search-contents ">
-                <form action="index.html" method="GET">
-                    <div class="row">
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="area">
-                                    <option>Area From</option>
-                                    <option>1500</option>
-                                    <option>1200</option>
-                                    <option>900</option>
-                                    <option>600</option>
-                                    <option>300</option>
-                                    <option>100</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="property-status">
-                                    <option>Property Status</option>
-                                    <option>For Sale</option>
-                                    <option>For Rent</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="location">
-                                    <option selected="true" disabled="disabled">State (All)</option>
-                                    {% for key,value in state_choices.items %}
-                                      <option value="{{ key }}">{{ value }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="category">
-                                    <option>Property Types</option>
-                                    <option>Residential</option>
-                                    <option>Commercial</option>
-                                    <option>Land</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="form-group">
-                                <select name="bedrooms" class="selectpicker search-fields" name="bedrooms">
-                                 
-                                        <option selected="true" >Bedrooms (All)</option>
-                                        {% for key,value in bedroom_choices.items %}
-                                          <option value="{{ key }}">{{ value }}</option>
-                                        {% endfor %}
-                                 
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="bathrooms">
-                                    <option selected="true" >Bathrooms (All)</option>
-                                    {% for key,value in bathroom_choices.items %}
-                                      <option value="{{ key }}">{{ value }}</option>
-                                    {% endfor %}
-                             
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="form-group">
-                                <div class="range-slider">
-                                    <div data-min="0" data-max="150000" data-unit="USD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="form-group">
-                                <button class="search-button btn-md btn-color" type="submit">Search</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Search area end -->
-
 <!-- Featured properties start -->
-<div class="featured-properties content-area-2" >
+<div class="featured-properties content-area-7">
     <div class="container-fluid">
         <div class="main-title">
             <h1>Featured Properties</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
-        {% if listings %}
-            {% for listing in listings %}
-                <div class="row display-flex" >
-                    <div class="col-lg-3 col-md-6 col-sm-12 wow fadeInLeft delay-04s">
-                        <div class="property-box-2">
-                            <div class="property-thumbnail">
-                                <a href="{% url 'listing' listing.id %}" class="property-img">
-                                    <div class="listing-badges">
-                                        <span class="featured">Featured</span>
-                                    </div>
-                                    <div class="tag-for">For Sale</div>
-                                    <img src="{{ listing.photo_main.url }}"  alt="property-2" class="img-fluid">
-                                    <div class="info">
-                                        <ul class="facilities-list clearfix">
-                                            <li>
-                                                <i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
-                                                <p>Sq Ft {{ listing.sqft }}</p>
-                                            </li>
-                                            <li>
-                                                <i class="flaticon-bed"></i>
-                                                <p>{{ listing.bedrooms}} Beds</p>
-                                            </li>
-                                            <li>
-                                                <i class="flaticon-bath"></i>
-                                                <p>{{ listing.bathrooms}} Baths</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </a>
-                                <div class="property-overlay">
-                                    <a href="properties-details.html" class="overlay-link">
-                                        <i class="fa fa-link"></i>
-                                    </a>
-                                    <a class="overlay-link property-video" title="Test Title">
-                                        <i class="fa fa-video-camera"></i>
-                                    </a>
-                                    <div class="property-magnify-gallery">
-                                        <a href="http://placehold.it/700x900" class="overlay-link">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
-                                        <a href="http://placehold.it/700x900" class="hidden"></a>
-                                        <a href="http://placehold.it/700x900" class="hidden"></a>
-                                    </div>
-                                </div>
+        <div class="row slick-fullwidth wow fadeInUp delay-04s">
+            {% if listings %}
+                {% for listing in listings %}
+    
+            <div class="slick-slide-item">
+                <div class="property-box">
+                    <div class="property-thumbnail">
+                        <a href="{% url 'listing' listing.id%}" class="property-img">
+                            <div class="listing-badges">
+                                <span class="featured">Featured</span>
                             </div>
-                            <div class="detail">
-                                <h5 class="title"><a href="properties-details.html">{{ listing.title}}</a></h5>
-                                <h4 class="price">
-                                    ${{ listing.price}}
-                                </h4>
+                            <div class="tag-for">For Sale</div>
+                            <div class="plan-price"><sup>${{listing.price}} </div>
+                            <img style="object-fit: cover; border-radius: 5px;" src="{{ listing.photo_main.url }}" alt="property-box" height="300px">
+                        </a>
+                        <div class="property-overlay">
+                            <a href="properties-details.html" class="overlay-link">
+                                <i class="fa fa-link"></i>
+                            </a>
+                            <a class="overlay-link property-video" title="Test Title">
+                                <i class="fa fa-video-camera"></i>
+                            </a>
+                            <div class="property-magnify-gallery">
+                                <a href="http://placehold.it/750x540" class="overlay-link">
+                                    <i class="fa fa-expand"></i>
+                                </a>
+                                <a href="http://placehold.it/750x540" class="hidden"></a>
+                                <a href="http://placehold.it/750x540" class="hidden"></a>
                             </div>
                         </div>
                     </div>
-                       
+                    <div class="detail">
+                        <h1 class="title">
+                            <a href="properties-details.html">{{listing.title}}</a>
+                        </h1>
+                        <div class="location">
+                            <a href="properties-details.html">
+                                <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{listing.postal_code}} {{listing.city}} {{listing.county}},
+                            </a>
+                        </div>
+                        <ul class="facilities-list clearfix">
+                            <li>
+                                <i class="flaticon-bed"></i> {{listing.bedrooms}} Bedrooms
+                            </li>
+                            <li>
+                                <i class="flaticon-bath"></i> {{listing.bathrooms}} Bathrooms
+                            </li>
+                            <li>
+                                <i class="flaticon-square-layouting-with-black-square-in-east-area"></i> Sq Ft:{{listing.sqft}}
+                            </li>
+                            <li>
+                                <i class="flaticon-car-repair"></i> 1 {{listing.garage}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer">
+                        <a href="#">
+                            <i class="fa fa-user"></i> {{listing.realtor}}
+                        </a>
+                        <span>
+                            <i class="fa fa-calendar-o"></i> {{listing.list_date | timesince }} Ago
+                        </span>
+                    </div>
                 </div>
             </div>
-        {% endfor %}
-    {% else %}
-        <div class="col-md-12">
-          <p>No Listings Available</p>
+            <div class="slick-prev slick-arrow-buton">
+                <i class="fa fa-angle-left"></i>
+            </div>
+            <div class="slick-next slick-arrow-buton">
+                <i class="fa fa-angle-right"></i>
+            </div>
+            {% endfor %}
+            {% else %}
+              <div class="col-md-12">
+                <p>No Listings Available</p>
+              </div>
+            {% endif %}
         </div>
-    {% endif %}    
+    </div>
+</div>
 <!-- Featured properties end -->
+
 
 <!-- Services 2 start -->
 <div class="services-2 overview-bgi">
