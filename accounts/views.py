@@ -70,4 +70,6 @@ def dashboard(request):
   context = {
     'contacts': user_contacts
   }
+
   return render(request, 'pages/index-5.html', context)
+
