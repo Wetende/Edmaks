@@ -32,8 +32,4 @@ def about(request):
         'mvp_realtors': mvp_realtors
     }
 
-    return render(request, 'main/HTML/about.html', context)
-
-    
-
     return render(request, 'pages/about.html', context)
