@@ -69,13 +69,13 @@
                                   
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a class="dropdown-item" href="user-profile.html">User profile</a>
+                                                <a class="dropdown-item" href="{% url 'uProfile' %}">User profile</a>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" href="my-properties.html">My Properties</a>
+                                                <a class="dropdown-item" href="{% url 'mProperties' %}">My Properties</a>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" href="favorited-properties.html">Favorited Properties</a>
+                                                <a class="dropdown-item" href="{% url 'fProperties' %}">Favorited Properties</a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="{% url 'submit' %}">Submit Property</a>

@@ -73,3 +73,16 @@ def dashboard(request):
 
   return render(request, 'pages/index-5.html', context)
 
+
+def fProperties(request):
+
+  return render(request, 'accounts/favorited-properties.html')
+  
+def mProperties(request):
+  
+  return render(request, 'accounts/my-properties.html')
+
+ 
+def uProfile(request):
+  
+  return render(request, 'accounts/user-profile.html')
