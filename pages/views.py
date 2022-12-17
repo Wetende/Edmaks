@@ -19,6 +19,9 @@ def index(request):
 
     return render(request, 'pages/index-5.html', context)
 
+def shop(request):
+    return render(request, 'pages/shop-list.html')
+
     
 def about(request):
     # Get all realtors
@@ -33,3 +36,5 @@ def about(request):
     }
 
     return render(request, 'pages/about.html', context)
+
+
