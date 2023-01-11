@@ -10,6 +10,7 @@ urlpatterns = [
     path('uProfile', views.uProfile, name='uProfile'),
     path('mProperties', views.mProperties, name='mProperties'),
     path('fProperties', views.fProperties, name='fProperties'),
-   
+    path('cPassword', views.cPassword, name='cPassword'),
+    
    
 ]

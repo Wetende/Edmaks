@@ -101,3 +101,4 @@ def submit(request):
   }
 
   return render(request, 'listings/submit-property.html', context)
+

@@ -19,6 +19,12 @@ def index(request):
 
     return render(request, 'pages/index-5.html', context)
 
+def agents(request):
+    return render(request, 'pages/agent-grid-3.html')
+
+def blog(request):
+    return render(request, 'pages/blog-classic-sidebar-left.html')
+
 def shop(request):
     return render(request, 'pages/shop-list.html')
 

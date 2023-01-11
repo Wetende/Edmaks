@@ -86,3 +86,7 @@ def mProperties(request):
 def uProfile(request):
   
   return render(request, 'accounts/user-profile.html')
+
+def cPassword(request):
+  
+  return render(request, 'accounts/change-password.html')
