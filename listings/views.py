@@ -5,7 +5,7 @@ from .choices import price_choices, bedroom_choices, state_choices, property_typ
 from .models import Listing
 
 def index(request):
-  listings = Listing.objects.order_by('-list_date').filter(is_published=True)
+  listings = Listing.objects.all('-list_date').filter(is_published=True)
 
   paginator = Paginator(listings, 3)
   page = request.GET.get('page')

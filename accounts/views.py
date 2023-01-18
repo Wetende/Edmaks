@@ -90,3 +90,12 @@ def uProfile(request):
 def cPassword(request):
   
   return render(request, 'accounts/change-password.html')
+
+
+def delete(request):
+  
+  return render(request, 'accounts/')
+
+def edit(request):
+  
+  return render(request, 'accounts/')
