@@ -36,9 +36,27 @@ def blog(request):
     return render(request, 'pages/blog-classic-sidebar-right.html')
 
 def shop(request):
-    return render(request, 'pages/shop-list.html')
+    listings = Listing.objects.all()
 
+    context = {"listings":listings}
+    return render(request, 'pages/shop-list.html', context)
+
+def shop_detail(request, pk):
+    listing = Listing.objects.get(id=pk)
+    listings = Listing.objects.all()
+
+    context = {
+        "listing":listing,
+        "listings":listings,
+
+        }
+
+    return render(request, 'pages/shop-single.html', context)
     
+
+def cart(request):
+    return render(request, 'pages/shop-cart.html')
+
 def about(request):
     # Get all realtors
     realtors = Realtor.objects.order_by('-hire_date')

@@ -11,4 +11,8 @@ urlpatterns = [
     path('properties/',views.properties, name='properties'),
     path('list/',views.list, name='list'),
     path('grid/',views.grid, name='grid'),
+    path('shop_detail/<int:pk>/',views.shop_detail, name='shop_detail'),
+    path('cart/',views.cart, name='cart'),
+
+
 ]
