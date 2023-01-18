@@ -20,7 +20,12 @@ def index(request):
     return render(request, 'pages/index-5.html', context)
 
 def properties(request):
-    return render(request, 'pages/properties-list-rightside.html')
+    listings = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
+
+    context = {
+        'listings': listings
+    }
+    return render(request, 'pages/properties-list-rightside.html', context)
 
 def list(request):
     return render(request, 'pages/properties-list-rightside.html')
