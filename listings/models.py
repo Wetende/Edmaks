@@ -3,6 +3,7 @@ from secrets import choice
 from django.db import models
 from datetime import datetime
 from realtors.models import Realtor
+from django.contrib.auth.models import User
 
 
 property_type = [
@@ -19,6 +20,7 @@ property_type = [
 
 class Listing(models.Model):
   realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING, blank=True, null=True)
+  user_id = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=True, null=True)
   title = models.CharField(max_length=200)
   address = models.CharField(max_length=200)
   city = models.CharField(max_length=100)

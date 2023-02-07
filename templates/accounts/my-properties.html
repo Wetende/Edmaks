@@ -39,7 +39,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="flaticon-house" href={% url 'mProperties' %} class="active"> My Properties
+                                <a class="flaticon-house" href={% url 'accounts:mProperties' user.id=user.id %}class="active"> My Properties
                                 </a>
                             </li>
                             <li>
@@ -76,17 +76,20 @@
                         </tr>
                         </thead>
                         <tbody class="responsive-table">
+                            {% for Listing in listings %}
+
+                            
                         <tr>
                             <td class="listing-photoo">
-                                <img alt="my-properties" src="http://placehold.it/163x108" class="img-fluid">
+                                <img alt="my-properties" src={{Listing.photo_main}} class="img-fluid">
                             </td>
                             <td class="title-container">
-                                <h5><a href="#">Real Luxury Villa</a></h5>
-                                <h6><span>$90.00</span> / monthly</h6>
-                                <p><i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i> 123 Kathal St. Tampa City, </p>
+                                <h5><a href="#">"{{Listing.title}}</a></h5>
+                                <h6><span>{{Listing.price}}</span> / monthly</h6>
+                                <p><i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i> {{Listing.city}} </p>
                             </td>
                             <td class="date">
-                                7.02.2020
+                               {{Listing.list_date}}
                             </td>
                             <td class="action">
                                 <ul>
@@ -102,11 +105,17 @@
                                 </ul>
                             </td>
                         </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                     
             
                 </div>
+
+
+
+
+                
                 <div class="pagination-box text-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">

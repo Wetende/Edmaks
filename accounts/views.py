@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from contacts.models import Contact
+from listings.models import Listing
 
 def register(request):
   if request.method == 'POST':
@@ -78,9 +79,17 @@ def fProperties(request):
 
   return render(request, 'accounts/favorited-properties.html')
   
-def mProperties(request):
+def mProperties(request, user_id):
+  user = User.objects.get(pk=user_id)
+
+  listings = Listing.objects.order_by('-list_date').filter (owner=user)
+
+  context = {
+        'listings': listings
+    }
+  return render(request, 'accounts/my-properties.html', context)
+
   
-  return render(request, 'accounts/my-properties.html')
 
  
 def uProfile(request):
@@ -99,3 +108,7 @@ def delete(request):
 def edit(request):
   
   return render(request, 'accounts/')
+
+
+
+

@@ -8,7 +8,7 @@
 <div class="sub-banner">
     <div class="container">
         <div class="breadcrumb-area">
-            <h1>{{listing.title}}</h1>
+            <h1>{{Listing.title}}</h1>
             <ul class="breadcrumbs">
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li class="active">Property Detail</li>
@@ -28,11 +28,11 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="pull-left">
-                                    <h3>{{listing.title}}</h3>
-                                    <p><i class="fa fa-map-marker"></i> 20/F {{listing.state}}, {{listing.city}}, {{listing.address}}</p>
+                                    <h3>{{Listing.title}}</h3>
+                                    <p><i class="fa fa-map-marker"></i> 20/F {{Listing.state}}, {{Listing.city}}, {{Listing.address}}</p>
                                 </div>
                                 <div class="p-r">
-                                    <h3>{{listing.price}}</h3>
+                                    <h3>{{Listing.price}}</h3>
                                     <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
                                 </div>
                             </div>
@@ -229,23 +229,23 @@
                                                 <strong>Property Id:</strong>215
                                             </li>
                                             <li>
-                                                <strong>Price:</strong>$1240/ Month
+                                                <strong>Price:</strong>{{Listing.price}}/ Month
                                             </li>
                                             <li>
-                                                <strong>Property Type:</strong>House
+                                                <strong>Property Type:</strong>{{Listing.p_type}}
                                             </li>
                                             <li>
-                                                <strong>Bathrooms:</strong>3
+                                                <strong>Bathrooms:</strong>{{Listing.bathrooms}}
                                             </li>
                                             <li>
-                                                <strong>Bathrooms:</strong>2
+                                                <strong>Bathrooms:</strong>{{Listing.bathrooms}}
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-md-4 col-sm-6">
                                         <ul>
                                             <li>
-                                                <strong>Property Lot Size:</strong>800 ft2
+                                                <strong>Property Lot Size:</strong>{{Listing.sqft}}
                                             </li>
                                             <li>
                                                 <strong>Land area:</strong>230 ft2

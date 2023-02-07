@@ -27,6 +27,9 @@ def properties(request):
     }
     return render(request, 'pages/properties-list-rightside.html', context)
 
+
+
+
 def list(request):
     return render(request, 'pages/properties-list-rightside.html')
 
