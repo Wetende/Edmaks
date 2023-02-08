@@ -7,10 +7,10 @@ urlpatterns = [
     path('register', views.register, name='register'),
     path('logout', views.logout, name='logout'),
     path('dashboard', views.dashboard, name='dashboard'),
-    path('uProfile', views.uProfile, name='uProfile'),
-    path('mProperties/<int:user_id>/', views.mProperties, name='mProperties'),
-    path('fProperties', views.fProperties, name='fProperties'),
-    path('cPassword', views.cPassword, name='cPassword'),
+    path('profile', views.profile, name='uProfile'),
+    path('my_properties/<int:user_id>/', views.my_properties, name='mProperties'),
+    path('favourite_properties/<int:user_id>/', views.favourite_properties, name='fProperties'),
+    path('change_password', views.change_password, name='cPassword'),
     
    
 ]

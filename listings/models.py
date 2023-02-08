@@ -20,7 +20,7 @@ property_type = [
 
 class Listing(models.Model):
   realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING, blank=True, null=True)
-  user_id = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=True, null=True)
+  user = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=True, null=True)
   title = models.CharField(max_length=200)
   address = models.CharField(max_length=200)
   city = models.CharField(max_length=100)

@@ -34,15 +34,15 @@
                     <div class="detail clearfix">
                         <ul>
                             <li>
-                                <a class="flaticon-user" href={% url 'uProfile' %}>Profile
+                                <a class="flaticon-user" href="{% url 'uProfile' %}">Profile
                                 </a>
                             </li>
                             <li>
-                                <a class="flaticon-house" href={% url 'mProperties' %}>My Properties
+                                <a class="flaticon-house" href="{% url 'mProperties' user.id %}">My Properties
                                 </a>
                             </li>
                             <li>
-                                <a class="flaticon-heart-shape-outline" href={% url 'fProperties' %} class="active">Favorited Properties
+                                <a class="flaticon-heart-shape-outline" href="{% url 'fProperties' user.id %}" class="active">Favorited Properties
                                 </a>
                             </li>
                             <li>
@@ -51,7 +51,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="flaticon-locked-padlock" href={% url 'cPassword' %}>Change Password
+                                <a class="flaticon-locked-padlock" href="{% url 'cPassword' %}">Change Password
                                 </a>
                             </li>
                             <li>

@@ -3,6 +3,7 @@ from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from contacts.models import Contact
 from listings.models import Listing
+from django.contrib.auth.decorators import login_required
 
 def register(request):
   if request.method == 'POST':
@@ -64,49 +65,46 @@ def logout(request):
     messages.success(request, 'You are now logged out')
   return redirect('index')
 
-
+@login_required(login_url='login')
 def dashboard(request):
   user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=request.user.id)
+  listings = Listing.objects.all()
 
   context = {
-    'contacts': user_contacts
+    'contacts': user_contacts,
+    'listings':listings
   }
 
   return render(request, 'pages/index-5.html', context)
 
 
-def fProperties(request):
-
+@login_required(login_url='login')
+def favourite_properties(request, user_id):
   return render(request, 'accounts/favorited-properties.html')
   
-def mProperties(request, user_id):
-  user = User.objects.get(pk=user_id)
 
-  listings = Listing.objects.order_by('-list_date').filter (owner=user)
+def my_properties(request, user_id):
+  user = User.objects.get(pk=user_id)
+  listings = Listing.objects.order_by('-list_date').filter(user=user)
 
   context = {
         'listings': listings
     }
+  
   return render(request, 'accounts/my-properties.html', context)
-
   
-
  
-def uProfile(request):
-  
+def profile(request):
   return render(request, 'accounts/user-profile.html')
 
-def cPassword(request):
-  
+def change_password(request):
   return render(request, 'accounts/change-password.html')
 
 
 def delete(request):
-  
   return render(request, 'accounts/')
 
 def edit(request):
-  
   return render(request, 'accounts/')
 
 
