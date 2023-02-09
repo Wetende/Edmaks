@@ -22,90 +22,44 @@
 
 <!-- Blog section start -->
 <div class="blog-section content-area-2">
+    {% if blogs %}
+    {% for Blog in blogs %}
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12">
                 <div class="blog-1">
                     <div class="blog-photo">
-                        <img src="http://placehold.it/730x486" alt="blog" class="img-fluid">
+                        <img src={{ Blog.image }} alt="blog" class="img-fluid">
                         <div class="user">
                             <div class="avatar">
                                 <img src="http://placehold.it/30x30" alt="avatar" class="img-fluid rounded-circle">
                             </div>
-                            <div class="name">
-                                <h5>John Doe</h5>
+                            <div class="name">  
+                                <h5>Author: {{ Blog.author }}</h5>
                             </div>
                         </div>
                     </div>
                     <div class="detail">
                         <h2>
-                            <a href="blog-single-sidebar-right.html">Why Live in New York</a>
+                            <a href="blog-single-sidebar-right.html">{{ Blog.title }}</a>
                         </h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions,</p>
+                        <p>{{ Blog.content }}</p>
                         <div class="blog-footer clearfix">
                             <div class="float-left">
-                                <p class="date"><i class="flaticon-calendar"></i> 24 Sep, 2019</p>
+                                <p class="date"><i class="flaticon-calendar"></i> Date Posted: {{ Blog.date_posted }}</p>
                             </div>
+                            {% endfor %}
+                            {% else %}
                             <div class="float-right">
                                 <a href="#">Read more..</a>
                             </div>
                         </div>
+                    
+                    {% endif %}
                     </div>
-                </div>
-                <div class="blog-1">
-                    <div class="blog-photo">
-                        <img src="http://placehold.it/730x486" alt="blog" class="img-fluid">
-                        <div class="user">
-                            <div class="avatar">
-                                <img src="http://placehold.it/30x30" alt="avatar" class="img-fluid rounded-circle">
-                            </div>
-                            <div class="name">
-                                <h5>Brandon Miller</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="detail">
-                        <h2>
-                            <a href="blog-single-sidebar-right.html">Selling Your Home</a>
-                        </h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions,</p>
-                        <div class="blog-footer clearfix">
-                            <div class="float-left">
-                                <p class="date"><i class="flaticon-calendar"></i> 14 Feb, 2020</p>
-                            </div>
-                            <div class="float-right">
-                                <a href="#">Read more..</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-1">
-                    <div class="blog-photo">
-                        <img src="http://placehold.it/730x486" alt="blog" class="img-fluid">
-                        <div class="user">
-                            <div class="avatar">
-                                <img src="http://placehold.it/30x30" alt="avatar" class="img-fluid rounded-circle">
-                            </div>
-                            <div class="name">
-                                <h5>Teseira</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="detail">
-                        <h2>
-                            <a href="blog-single-sidebar-right.html">Buying a Home</a>
-                        </h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions,</p>
-                        <div class="blog-footer clearfix">
-                            <div class="float-left">
-                                <p class="date"><i class="flaticon-calendar"></i> 14 Mar, 2020</p>
-                            </div>
-                            <div class="float-right">
-                                <a href="#">Read more..</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    
+              
+                
                 <div class="pagination-box hidden-mb-45 text-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">

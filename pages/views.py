@@ -4,6 +4,7 @@ from listings.choices import price_choices, bedroom_choices, state_choices, bath
 
 from listings.models import Listing
 from realtors.models import Realtor
+from .models import Blog
 
 def index(request):
     listings = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
@@ -41,7 +42,9 @@ def agents(request):
     return render(request, 'pages/agent-grid-3.html')
 
 def blog(request):
-    return render(request, 'pages/blog-classic-sidebar-right.html')
+    blogs = Blog.objects.all()
+    return render(request, 'pages/blog-classic-sidebar-right.html', {'blogs': blogs})
+
 
 def shop(request):
     listings = Listing.objects.all()
@@ -78,5 +81,7 @@ def about(request):
     }
 
     return render(request, 'pages/about.html', context)
+
+
 
 
