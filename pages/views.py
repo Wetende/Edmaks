@@ -4,7 +4,7 @@ from listings.choices import price_choices, bedroom_choices, state_choices, bath
 
 from listings.models import Listing
 from realtors.models import Realtor
-from .models import Blog
+from .models import Blog, Category, Tag, Tweet, PropertyTag
 
 def index(request):
     listings = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
@@ -43,7 +43,17 @@ def agents(request):
 
 def blog(request):
     blogs = Blog.objects.all()
-    return render(request, 'pages/blog-classic-sidebar-right.html', {'blogs': blogs})
+    latest_tweets = Tweet.objects.all().order_by('-date_posted')[:5]
+    categories = Category.objects.all()
+    tags = Tag.objects.all()
+    recent_properties = Listing.objects.all().order_by('-date_posted')[:5]
+    
+    if title:
+        title = Listing.objects.get(id=title)
+        property_tags = PropertyTag.objects.filter(title=title)
+        return render(request, 'pages/blog-classic-sidebar-right.html', {'title': title, 'property_tags': property_tags})
+    
+    return render(request, 'pages/blog-classic-sidebar-right.html', {'blogs': blogs, 'latest_tweets': latest_tweets, 'categories': categories, 'recent_properties': recent_properties, 'tags': tags})
 
 
 def shop(request):

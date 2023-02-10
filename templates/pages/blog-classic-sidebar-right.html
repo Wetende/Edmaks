@@ -21,105 +21,115 @@
 <!-- Sub banner end -->
 
 <!-- Blog section start -->
+
 <div class="blog-section content-area-2">
-    {% if blogs %}
-    {% for Blog in blogs %}
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-12">
-                <div class="blog-1">
-                    <div class="blog-photo">
-                        <img src={{ Blog.image }} alt="blog" class="img-fluid">
-                        <div class="user">
-                            <div class="avatar">
-                                <img src="http://placehold.it/30x30" alt="avatar" class="img-fluid rounded-circle">
+      <div class="row">
+        <div class="col-lg-8 col-md-12">
+          <div class="row">
+            {% if blogs %}
+             {% for Blog in blogs %}
+                <div class="col-lg-8 col-md-12">
+                  <div class="blog-1">
+                    <div class="col-lg-8 col-md-12">
+                        <div class="blog-1">
+                            <div class="blog-photo">
+                                <img src={{ Blog.image }} alt="blog" class="img-fluid">
+                                <div class="user">
+                                    <div class="avatar">
+                                        <img src="http://placehold.it/30x30" alt="avatar" class="img-fluid rounded-circle">
+                                    </div>
+                                    <div class="name">  
+                                        <h5>Author: {{ Blog.author }}</h5>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="name">  
-                                <h5>Author: {{ Blog.author }}</h5>
+                            <div class="detail">
+                                <h2>
+                                    <a href="blog-single-sidebar-right.html">{{ Blog.title }}</a>
+                                </h2>
+                                <p>{{ Blog.content }}</p>
+                                <div class="blog-footer clearfix">
+                                    <div class="float-left">
+                                        <p class="date"><i class="flaticon-calendar"></i> Date Posted: {{ Blog.date_posted }}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="detail">
-                        <h2>
-                            <a href="blog-single-sidebar-right.html">{{ Blog.title }}</a>
-                        </h2>
-                        <p>{{ Blog.content }}</p>
-                        <div class="blog-footer clearfix">
-                            <div class="float-left">
-                                <p class="date"><i class="flaticon-calendar"></i> Date Posted: {{ Blog.date_posted }}</p>
-                            </div>
-                            {% endfor %}
-                            {% else %}
-                            <div class="float-right">
-                                <a href="#">Read more..</a>
-                            </div>
-                        </div>
-                    
-                    {% endif %}
-                    </div>
-                    
-              
+                {% endfor %}
                 
-                <div class="pagination-box hidden-mb-45 text-center">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#"><span aria-hidden="true">«</span></a></li>
-                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><span aria-hidden="true">»</span></a></li>
-                        </ul>
-                    </nav>
+            {% else %}
+                <div class="float-right">
+                    <a href="#">Read more..</a>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="sidebar mbl">
+                
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="pagination-box hidden-mb-45 text-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#"><span aria-hidden="true">«</span></a></li>
+                <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#"><span aria-hidden="true">»</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+</div>
+
+<div class="col-lg-4 col-md-12">
+    <div class="sidebar mbl">
                     <!-- Search box start -->
-                    <div class="widget search-box">
-                        <h5 class="sidebar-title">Search</h5>
-                        <form class="form-search" method="GET">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <button type="submit" class="btn"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
+        <div class="widget search-box">
+            <h5 class="sidebar-title">Search</h5>
+                <form class="form-search" method="GET">
+                <input type="text" class="form-control" placeholder="Search">
+                <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+                </form>
+        </div>
                     <!-- Categories start -->
-                    <div class="widget categories">
-                        <h5 class="sidebar-title">Categories</h5>
-                        <ul>
-                            <li><a href="#">Apartments<span>(12)</span></a></li>
-                            <li><a href="#">Houses<span>(8)</span></a></li>
-                            <li><a href="#">Family Houses<span>(23)</span></a></li>
-                            <li><a href="#">Offices<span>(5)</span></a></li>
-                            <li><a href="#">Villas<span>(63)</span></a></li>
-                            <li><a href="#">Other<span>(7)</span></a></li>
-                        </ul>
-                    </div>
+        <div class="widget categories">
+           <h5 class="sidebar-title">Categories</h5>
+                <ul>
+                    <li><a href="#">Apartments<span>(12)</span></a></li>
+                    <li><a href="#">Houses<span>(8)</span></a></li>
+                    <li><a href="#">Family Houses<span>(23)</span></a></li>
+                    <li><a href="#">Offices<span>(5)</span></a></li>
+                    <li><a href="#">Villas<span>(63)</span></a></li>
+                    <li><a href="#">Other<span>(7)</span></a></li>
+                </ul>
+        </div>
                     <!-- Recent posts start -->
-                    <div class="widget recent-posts">
-                        <h5 class="sidebar-title">Recent Properties</h5>
-                        <div class="media mb-4">
-                            <a href="properties-details.html">
-                                <img src="http://placehold.it/60x60" alt="sub-property">
-                            </a>
-                            <div class="media-body align-self-center">
-                                <h5>
-                                    <a href="properties-details.html">Beautiful Single Home</a>
-                                </h5>
+        <div class="widget recent-posts">
+            <h5 class="sidebar-title">Recent Properties</h5>
+                <div class="media mb-4">
+                    <a href="properties-details.html">
+                        <img src="http://placehold.it/60x60" alt="sub-property">
+                    </a>
+                        <div class="media-body align-self-center">
+                            <h5>
+                                <a href="properties-details.html">Beautiful Single Home</a>
+                            </h5>
                                 <p>Feb 27, 2020 | $1045,000</p>
-                            </div>
                         </div>
-                        <div class="media mb-4">
-                            <a href="properties-details.html">
-                                <img src="http://placehold.it/60x60" alt="sub-property-2">
-                            </a>
-                            <div class="media-body align-self-center">
-                                <h5>
-                                    <a href="properties-details.html">Sweet Family Home</a>
-                                </h5>
+                </div>
+                <div class="media mb-4">
+                    <a href="properties-details.html">
+                         <img src="http://placehold.it/60x60" alt="sub-property-2">
+                    </a>
+                        <div class="media-body align-self-center">
+                            <h5>
+                                <a href="properties-details.html">Sweet Family Home</a>
+                            </h5>
                                 <p>Mar 14, 2020 | $944,000</p>
-                            </div>
                         </div>
-                        <div class="media">
+                </div>
+                <div class="media">
                             <a href="properties-details.html">
                                 <img src="http://placehold.it/60x60" alt="sub-property-3">
                             </a>
@@ -179,6 +189,10 @@
         </div>
     </div>
 </div>
+</div>
+
+
+
 <!-- Blog section end -->
 
 <!-- Footer start -->
