@@ -4,6 +4,7 @@ from django.db import models
 from datetime import datetime
 from realtors.models import Realtor
 from django.contrib.auth.models import User
+import uuid
 
 
 property_type = [
@@ -46,3 +47,42 @@ class Listing(models.Model):
 
   def __str__(self):
     return self.title
+  
+
+class Favourite(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    complete = models.BooleanField(default=False)
+
+    def __str__(self) -> str:
+        return str(self.id)
+
+    @property
+    def total_price(self):
+        favouriteitems = self.favouriteitems.all()
+        total_cost = sum([item.price for item in favouriteitems])
+        return total_cost
+
+    @property
+    def total_items(self):
+        favouriteitems = self.favouriteitems.all()
+        quantity = sum([item.quantity for item in favouriteitems])
+        return quantity
+
+
+class FavouriteItems(models.Model):
+    listing = models.ForeignKey(Listing, on_delete=models.CASCADE)
+    favourite = models.ForeignKey(Favourite, 
+                                  on_delete=models.CASCADE, related_name="favouriteitems")
+    quantity = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name_plural = "Favourite Items"
+
+    def __str__(self) -> str:
+        return self.listing.title
+
+    @property
+    def price(self):
+        actual_price = self.listing.price*self.quantity
+        return actual_price

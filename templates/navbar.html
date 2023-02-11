@@ -1,5 +1,11 @@
 
 {% load static %}
+
+{% if messages %}
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+{% endif %}
 <!-- Top header start -->
 <header class="top-header th-bg" id="top-header-2">
     <div class="container">
@@ -90,6 +96,14 @@
                                         </ul>
                                   
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'cart' %}" >
+                                    Cart
+                                </a>
+                                
+                            </li>
+
                             {% endif %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'agents' %}" >
@@ -115,7 +129,7 @@
                                 </a>
                             </li>
                             <li class="nav-item mt-4">
-                                <a  href="{% url 'submit' %}" class="submit-btn bg-primary">
+                                <a style="border-radius: 5%;"  href="{% url 'submit' %}" class="submit-btn bg-primary">
                                     Submit Property
                                 </a>
                             </li>

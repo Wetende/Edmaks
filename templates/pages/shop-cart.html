@@ -6,6 +6,12 @@
 
 {% block content %}
 
+
+
+<!--Start json_script to be parsed -->
+{{listing_ids|json_script:"listing_ids"}} 
+<!-- End json_script to be parsed -->
+
 <!-- Sub banner start -->
 <div class="sub-banner">
     <div class="container">
@@ -30,11 +36,12 @@
                     <p>Lorem ipsum dolor sit amet, consectetu radipisi</p>
                 </div>
             </div>
+           
             <div class="col-lg-8">
                 <table class="shop-table cart">
                     <thead>
                     <tr>
-                        <th  class="product-name">Product</th>
+                        <th  class="product-name">Property</th>
                         <th class="product-price">Description</th>
                         <th class="product-price">Price</th>
                         <th class="product-quantity">Qty</th>
@@ -43,81 +50,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td class="product-thumbnail"><img src="http://placehold.it/100x100" alt="shop-1"></td>
+                        {% for item in favouriteitems %}
+                            <tr>
+                                <td class="product-thumbnail"><img style="object-fit: cover; border-radius: 5%;" src="{{item.listing.photo_main.url}}" alt="shop-1" width="50px" height="50px"></td>
 
-                        <td class="product-name">
-                            <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor</a>
-                        </td>
-                        <td>£58.00</td>
-                        <td><input class="qty" type="text" value="+1"></td>
-                        <td>£58.00</td>
-                        <td class="product-remove"><a href="#"><i class="fa fa-close"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td class="product-thumbnail"><img src="http://placehold.it/100x100" alt="shop-2"></td>
-                        <td class="product-name">
-                            <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor</a>
-                        </td>
-                        <td>£58.00</td>
-                        <td><input class="qty" type="text" value="+1"></td>
-                        <td>£58.00</td>
-                        <td class="product-remove"><a href="#"><i class="fa fa-close"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td class="product-thumbnail"><img src="http://placehold.it/100x100" alt="shop-3"></td>
-
-                        <td class="product-name">
-                            <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor</a>
-                        </td>
-                        <td>£58.00</td>
-                        <td><input class="qty" type="text" value="+1"></td>
-                        <td>£58.00</td>
-                        <td class="product-remove"><a href="#"><i class="fa fa-close"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td class="product-thumbnail"><img src="http://placehold.it/100x100" alt="shop-4"></td>
-
-                        <td class="product-name">
-                            <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor</a>
-                        </td>
-                        <td>£58.00</td>
-                        <td><input class="qty" type="text" value="+1"></td>
-                        <td>£58.00</td>
-                        <td class="product-remove"><a href="#"><i class="fa fa-close"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td class="product-thumbnail"><img src="http://placehold.it/100x100" alt="shop-5"></td>
-
-                        <td class="product-name">
-                            <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor</a>
-                        </td>
-                        <td>£58.00</td>
-                        <td><input class="qty" type="text" value="+1"></td>
-                        <td>£58.00</td>
-                        <td class="product-remove"><a href="#"><i class="fa fa-close"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td class="product-thumbnail"><img src="http://placehold.it/100x100" alt="shop-6"></td>
-                        <td class="product-name">
-                            <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor</a>
-                        </td>
-                        <td>£58.00</td>
-                        <td><input class="qty" type="text" value="+1"></td>
-                        <td>£58.00</td>
-                        <td class="product-remove"><a href="#"><i class="fa fa-close"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td class="product-thumbnail"><img src="http://placehold.it/100x100" alt="shop-7"></td>
-
-                        <td class="product-name">
-                            <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor</a>
-                        </td>
-                        <td>£58.00</td>
-                        <td><input class="qty" type="text" value="+1"></td>
-                        <td>£58.00</td>
-                        <td class="product-remove"><a href="#"><i class="fa fa-close"></i></a></td>
-                    </tr>
+                                <td class="product-name">
+                                    <a href="{% url 'shop_detail' item.listing.id %}">{{item.listing.title}}</a>
+                                </td>
+                                <td>Ksh {{item.listing.price}}</td>
+                                <td><input id="qty" class="qty" type="text" value="{{item.quantity}}"></td>
+                                <td>Ksh {{item.listing.price}}</td>
+                                <td class="product-remove"><button class="btn btn-border btn-sm" id="del" value="{{item.listing.id}}" title="Remove from cart"><i class="fa fa-close"></i></button></td>
+                            </tr>
+                        {% endfor %}
+               
+                
                     </tbody>
                 </table>
             </div>
@@ -127,29 +74,21 @@
                     <hr>
                     <ul>
                         <li>
-                            Subtotal<span class="pull-right">$170.00</span>
+                            Subtotal<span class="pull-right">Ksh {{favourite.total_price}}</span>
                         </li>
                         <li>
-                            Shipping Charge<span class="pull-right">$sub-property-234.00</span>
+                            Local Delivery <span class="pull-right">Free Delivery</span>
                         </li>
-                        <li>
-                            Local Delivery <span class="pull-right">$334</span>
-                        </li>
-                        <li>
-                            Flat Rate<span class="pull-right">$1sub-property-234</span>
-                        </li>
-                        <li>
-                            International<span class="pull-right">$65sub-property-2</span>
-                        </li>
+                 
                     </ul>
                     <hr>
                     <p class="mar-b-50">
-                        Grand Total<span class="pull-right">$9531</span>
+                        Grand Total<span class="pull-right">Ksh {{favourite.total_price}}</span>
                     </p>
                     <br>
 
                     <button class="btn btn-dark btn-block btn-md" type="submit">Update Cart</button>
-                    <button class="btn btn-color btn-block btn-md" type="submit">Proceed To Checkout</button>
+                    <button id="update" class="btn btn-color btn-block btn-md" type="submit">Proceed To Checkout</button>
                 </div>
             </div>
         </div>
@@ -158,182 +97,95 @@
 <!-- Shop cart end -->
 
 <!-- Footer start -->
-<footer class="footer">
-    <div class="container footer-inner">
-        <div class="row">
-            <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6">
-                <div class="footer-item">
-                    <h4>Contact Us</h4>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>20/F Green Road, Dhanmondi, Dhaka
-                        </li>
-                        <li>
-                            <i class="fa fa-envelope"></i><a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-phone"></i><a href="tel:+55-417-634-7071">+0477 85X6 552</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-fax"></i>+0487 85X6 224
-                        </li>
-                        <li>
-                            <i class="fa fa-skype"></i><a href="mailto:info@green.com">info@green.com</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
-                <div class="footer-item">
-                    <h4>
-                        Useful Links
-                    </h4>
-                    <ul class="links">
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>Home</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>About us</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>Service</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>Contact Us</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>Properties Grid</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>Blog Post</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>Property Details</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="footer-item recent-posts">
-                    <h4>Recent Properties</h4>
-                    <div class="media mb-4">
-                        <a href="properties-details.html">
-                            <img src="http://placehold.it/60x60" alt="sub-property">
-                        </a>
-                        <div class="media-body align-self-center">
-                            <h5>
-                                <a href="properties-details.html">Beautiful Single Home</a>
-                            </h5>
-                            <p>Feb 27, 2020 | $1045,000</p>
-                        </div>
-                    </div>
-                    <div class="media mb-4">
-                        <a href="properties-details.html">
-                            <img src="http://placehold.it/60x60" alt="sub-property-2">
-                        </a>
-                        <div class="media-body align-self-center">
-                            <h5>
-                                <a href="properties-details.html">Sweet Family Home</a>
-                            </h5>
-                            <p>Mar 14, 2020 | $944,000</p>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <a href="properties-details.html">
-                            <img src="http://placehold.it/60x60" alt="sub-property-3">
-                        </a>
-                        <div class="media-body align-self-center">
-                            <h5>
-                                <a href="properties-details.html">Real Luxury Villa</a>
-                            </h5>
-                            <p>Apr 14, 2020 | $1420,000</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                <div class="footer-item clearfix">
-                    <h4>Subscribe</h4>
-                    <div class="Subscribe-box">
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                        <form action="#" method="GET">
-                            <p>
-                                <input type="text" class="form-contact" name="email" placeholder="Enter Address">
-                            </p>
-                            <p>
-                                <button type="submit" name="submitNewsletter" class="btn btn-block btn-color">
-                                    Subscribe
-                                </button>
-                            </p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="sub-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-12">
-                    <p class="copy">© 2018 <a href="#">Theme Vessel.</a> Trademarks and brands are the property of their respective owners.</p>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <ul class="social-list clearfix">
-                        <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="google-bg"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- Footer end -->
+{% include 'footer.html' %}
+<!-- Footer End -->
 
-<!-- Full Page Search -->
-<div id="full-page-search">
-    <button type="button" class="close">×</button>
-    <form action="#" class="search">
-        <input type="search" value="" placeholder="type keyword(s) here" />
-        <button type="button" class="btn btn-sm btn-color">Search</button>
-    </form>
-</div>
+<script>
+    
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 
-<!-- Off-canvas sidebar -->
-<div class="off-canvas-sidebar">
-    <div class="off-canvas-sidebar-wrapper">
-        <div class="off-canvas-header">
-            <a class="close-offcanvas" href="#"><span class="fa fa-times"></span></a>
-        </div>
-        <div class="off-canvas-content">
-            <aside class="canvas-widget">
-                <div class="logo-sitebar text-center">
-                    <img src="assets/img/logos/logo.png" alt="logo">
-                </div>
-            </aside>
-            <aside class="canvas-widget">
-                <ul class="menu">
-                    <li class="menu-item menu-item-has-children"><a href="index.html">Home</a></li>
-                    <li class="menu-item"><a href="properties-grid-leftside.html">Properties List</a></li>
-                    <li class="menu-item"><a href="properties-details.html">Property Detail</a></li>
-                    <li class="menu-item"><a href="blog-single-sidebar-right.html">Blog</a></li>
-                    <li class="menu-item"><a href="about.html">About  US</a></li>
-                    <li class="menu-item"><a href="contact-3.html">Contact US</a></li>
-                </ul>
-            </aside>
-            <aside class="canvas-widget">
-                <ul class="social-icons">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#"><i class="fa fa-vk"></i></a></li>
-                </ul>
-            </aside>
-        </div>
-    </div>
-</div>
+const csrftoken = getCookie('csrftoken');
+
+
+//Remove cart
+const deleteBtns = document.querySelectorAll('#del')
+const updateBtn = document.getElementById("update")
+
+deleteBtns.forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+        const listing_id = e.target.value;
+        const url = "/remove_cart/";
+        const data = { id: listing_id }
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+
+            body: JSON.stringify(data)
+        })
+        .then(response=>response.json())
+        .then(data=>{
+            location.reload()
+        })
+
+    })
+})
+
+
+
+
+// const quantityBtns = document.getElementById("qty")
+
+// quantityBtns.forEach(btn => {
+//     btn.addEventListener('change', (e)=>{
+//     const finalQuantity = e.target.value
+//     if (finalQuantity>0){
+
+//         updateBtn.addEventListener('click', (e)=>{
+//         const listing_id = e.target.value;
+//             const url = "/update_cart/";
+//             const data = { id: listing_id, new:newQuantity }
+//             fetch(url, {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'X-CSRFToken': csrftoken
+//                 },
+
+//                 body: JSON.stringify(data)
+//             })
+//             .then(response=>response.json())
+//             .then(data=>{
+//                 location.reload()
+//             })
+
+//     })
+
+
+//     }})
+// })
+
+        
+  
+
+
+</script>
 
 <!-- External JS libraries -->
 <script src="assets/js/jquery-2.2.0.min.js"></script>
