@@ -43,18 +43,17 @@ def agents(request):
 
 def blog(request):
     blogs = Blog.objects.all()
-    latest_tweets = Tweet.objects.all().order_by('-date_posted')[:5]
+    latest_tweets = Tweet.objects.all().order_by('date_posted')[:5]
     categories = Category.objects.all()
     tags = Tag.objects.all()
-    recent_properties = Listing.objects.all().order_by('-date_posted')[:5]
-    
-    if title:
-        title = Listing.objects.get(id=title)
-        property_tags = PropertyTag.objects.filter(title=title)
-        return render(request, 'pages/blog-classic-sidebar-right.html', {'title': title, 'property_tags': property_tags})
-    
-    return render(request, 'pages/blog-classic-sidebar-right.html', {'blogs': blogs, 'latest_tweets': latest_tweets, 'categories': categories, 'recent_properties': recent_properties, 'tags': tags})
+        
+       
+    return render(request, 'pages/blog-classic-sidebar-right.html', {'blogs': blogs, 'latest_tweets': latest_tweets, 'categories': categories, 'tags': tags})
 
+
+# def recent_properties(request):
+    #recent_properties = Listing.objects.all().order_by('list_date')[:5]
+   # return render(request, 'blog/recent_properties.html', {'recent_properties': recent_properties})
 
 def shop(request):
     listings = Listing.objects.all()
