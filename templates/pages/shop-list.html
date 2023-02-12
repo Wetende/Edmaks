@@ -168,10 +168,9 @@
     
     deleteBtns.forEach(btn=>{
         btn.addEventListener('click', (e)=>{
-            const product_id = e.target.value;
-            console.log(product_id)
+            const listing_id = e.target.value;
             const url = "/pages/remove_cart/";
-            const data = { id: product_id }
+            const data = { id: listing_id }
             fetch(url, {
                 method: 'POST',
                 headers: {
