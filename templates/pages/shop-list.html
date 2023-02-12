@@ -40,9 +40,13 @@
                 <div class="shop-details">
                     <h5><a href="{% url 'shop_detail' listing.id %}">{{listing.title}}</a></h5>
                     <div class="add-btn">
-                        <button class="btn btn-border btn-sm"  value="{{listing.id}}" title="Add to favourites">Add to Cart</button>
+
+                        {% if listing.id in favourites %}
+                            <button class="btn btn-border btn-sm"  value="{{listing.id}}" title="Remove from Cart">Remove from Cart</button>
+                        {% else %}
+                            <button class="btn btn-border btn-sm"  value="{{listing.id}}" title="Add to Cart">Add to Cart</button>
+                        {% endif %}
                     </div>
-                    <!-- <a class="btn btn-border btn-sm" href="{% url 'cart' %}" role="button">Add to Cart</a> -->
                 </div>
             </div>
         </div>
@@ -148,8 +152,8 @@
             })
             .then(response=>response.json())
             .then(data=>{
-                // Reoads a section of the page(Header)
-                    $("#reloadContent").load(location.href+" #reloadContent>*","");
+                    // Reoads a section of the page(Header)
+                    window.location ="/cart"
                    
                    
             })

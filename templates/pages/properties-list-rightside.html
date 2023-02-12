@@ -149,7 +149,7 @@
                         <h5 class="sidebar-title">Advanced Search</h5>
                         <div class="search-area-inner">
                             <div class="search-contents ">
-                                <form method="GET">
+                                <form name="search" method="GET">
                                     <div class="form-group">
                                         <select class="selectpicker search-fields" name="area">
                                             <option>Area From</option>
@@ -162,20 +162,22 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <select class="selectpicker search-fields" name="Status">
+                                        <select class="selectpicker search-fields" name="status">
                                             <option>Property Status</option>
                                             <option>For Sale</option>
                                             <option>For Rent</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <select class="selectpicker search-fields" name="Location">
+                                        <select class="selectpicker search-fields" name="location">
                                             <option>Location</option>
-                                            <option>United Kingdom</option>
-                                            <option>American Samoa</option>
-                                            <option>Belgium</option>
-                                            <option>Canada</option>
-                                            <option>Delaware</option>
+                                            <option>Uasin Gishu</option>
+                                            <option>Nairobi</option>
+                                            <option>Kisumu</option>
+                                            <option>Mombasa</option>
+                                            <option>Nakuru</option>
+                                            <option>Kakamega</option>
+
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -201,7 +203,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group mb-30">
-                                        <select class="selectpicker search-fields" name="bedrooms">
+                                        <select class="selectpicker search-fields" name="bathrooms">
                                             <option>Bathrooms</option>
                                             <option>1</option>
                                             <option>2</option>
@@ -223,7 +225,7 @@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <button class="search-button btn-md btn-color">Search</button>
+                                    <button name=search class="search-button btn-md btn-color">Search</button>
                                 </form>
                             </div>
                         </div>
