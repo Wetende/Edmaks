@@ -42,3 +42,10 @@ class Tweet(models.Model):
 
     def __str__(self):
         return self.content
+
+
+class Subscriber(models.Model):
+    email = models.EmailField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.email

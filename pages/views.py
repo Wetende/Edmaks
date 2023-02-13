@@ -1,14 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from listings.choices import price_choices, bedroom_choices, state_choices, bathroom_choices
 
 from listings.models import Listing, FavouriteItems, Favourite
 from realtors.models import Realtor
-from .models import Blog, Category, Tag, Tweet, PropertyTag
+from .models import Blog, Category, Tag, Tweet, PropertyTag, Subscriber
 
 from django.http import JsonResponse
 import json
 from django.contrib import messages
+
 
 
 def index(request):
@@ -51,21 +52,12 @@ def blog(request):
     latest_tweets = Tweet.objects.all().order_by('date_posted')[:5]
     categories = Category.objects.all()
     tags = Tag.objects.all()
-<<<<<<< HEAD
         
        
     return render(request, 'pages/blog-classic-sidebar-right.html', {'blogs': blogs, 'latest_tweets': latest_tweets, 'categories': categories, 'tags': tags})
-=======
     recent_properties = Listing.objects.all().order_by('-list_date')[:5]
     
-    if title:
-        title = Listing.objects.get(id=title)
-        property_tags = PropertyTag.objects.filter(title=title)
-        return render(request, 'pages/blog-classic-sidebar-right.html', {'title': title, 'property_tags': property_tags})
-    
-    return render(request, 'pages/blog-classic-sidebar-right.html', {'blogs': blogs, 'latest_tweets': latest_tweets, 'categories': categories, 'recent_properties': recent_properties, 'tags': tags})
->>>>>>> 872fec2cc5f21aac315585fbc4b0c7e3ec4c68a7
-
+  
 
 # def recent_properties(request):
     #recent_properties = Listing.objects.all().order_by('list_date')[:5]
@@ -175,6 +167,30 @@ def about(request):
     }
 
     return render(request, 'pages/about.html', context)
+
+
+
+
+
+def subscribe(request):
+  if request.method=="POST":
+     post = Subscriber() 
+    
+     email = request.POST['email']
+     post.email = email
+     post.save()
+     return render(request, 'footer.html')
+  else:
+     return HttpResponseBadRequest('Bad request')
+
+
+   
+    
+    
+
+    
+   
+
 
 
 

@@ -2,6 +2,8 @@ from django.urls import path
 
 from . import views
 
+
+
 urlpatterns = [
     path('', views.index, name='index'),
     path('about', views.about, name='about'),
@@ -13,6 +15,8 @@ urlpatterns = [
     path('grid/',views.grid, name='grid'),
     path('shop_detail/<int:pk>/',views.shop_detail, name='shop_detail'),
     path('cart/',views.cart, name='cart'),
+    path('subscribe/', views.subscribe, name='subscribe'),
+    
 
     # path('bookmark/', bookmark, name='bookmark'),
     path('add_cart/', views.add_cart, name='add_bookmark'),
