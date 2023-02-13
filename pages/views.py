@@ -9,6 +9,7 @@ from .models import Blog, Category, Tag, Tweet, PropertyTag, Subscriber
 from django.http import JsonResponse
 import json
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -27,7 +28,20 @@ def index(request):
     return render(request, 'pages/index-5.html', context)
 
 def properties(request):
-    listings = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
+
+    
+    search = request.GET.get('search') if request.GET.get('search') != None else ''
+    
+    if(search):
+        listings = Listing.objects.filter(
+            Q(room_title__name__icontains=search) |
+            Q(name__icontains=search) |
+            Q(description__icontains=search) 
+        
+        ) # Accessing foreign-keyed values upwards
+        
+    else:    
+        listings = Listing.objects.order_by('-list_date').filter(is_published=True)
 
     context = {
         'listings': listings
@@ -52,12 +66,23 @@ def blog(request):
     latest_tweets = Tweet.objects.all().order_by('date_posted')[:5]
     categories = Category.objects.all()
     tags = Tag.objects.all()
+<<<<<<< HEAD
         
        
     return render(request, 'pages/blog-classic-sidebar-right.html', {'blogs': blogs, 'latest_tweets': latest_tweets, 'categories': categories, 'tags': tags})
     recent_properties = Listing.objects.all().order_by('-list_date')[:5]
     
   
+=======
+    recent_properties = Listing.objects.all().order_by('-list_date')[:5]
+    
+    if title:
+        title = Listing.objects.get(id=title)
+        property_tags = PropertyTag.objects.filter(title=title)
+        return render(request, 'pages/blog-classic-sidebar-right.html', {'title': title, 'property_tags': property_tags})
+    
+    return render(request, 'pages/blog-classic-sidebar-right.html', {'blogs': blogs, 'latest_tweets': latest_tweets, 'categories': categories, 'recent_properties': recent_properties, 'tags': tags})
+
 
 # def recent_properties(request):
     #recent_properties = Listing.objects.all().order_by('list_date')[:5]
@@ -65,10 +90,19 @@ def blog(request):
 
 def shop(request):
     listings = Listing.objects.all()
+    favourites = []
 
-    context = {"listings":listings}
+    if request.user.is_authenticated:
+        favourite = Favourite.objects.get(user=request.user, complete=False)
+        favouriteitems = favourite.favouriteitems.all()
+
+        for fav in favouriteitems:
+            favourites.append(fav.listing.id)
+
+    context = {"listings":listings, "favourites":favourites}
     return render(request, 'pages/shop-list.html', context)
 
+@login_required
 def shop_detail(request, pk):
     listing = Listing.objects.get(id=pk)
     listings = Listing.objects.all()
@@ -82,6 +116,7 @@ def shop_detail(request, pk):
     return render(request, 'pages/shop-single.html', context)
     
 
+@login_required
 def cart(request):
     favourite = None
     favouriteitems = []
@@ -121,7 +156,6 @@ def add_cart(request):
             favouriteitem.quantity = 1
             total_items = favourite.total_items
             messages.info(request, "Added to Cart")
-
     return JsonResponse(total_items, safe=False)
 
 
