@@ -66,14 +66,13 @@ def blog(request):
     latest_tweets = Tweet.objects.all().order_by('date_posted')[:5]
     categories = Category.objects.all()
     tags = Tag.objects.all()
-<<<<<<< HEAD
+
         
        
     return render(request, 'pages/blog-classic-sidebar-right.html', {'blogs': blogs, 'latest_tweets': latest_tweets, 'categories': categories, 'tags': tags})
     recent_properties = Listing.objects.all().order_by('-list_date')[:5]
     
   
-=======
     recent_properties = Listing.objects.all().order_by('-list_date')[:5]
     
     if title:
