@@ -4,7 +4,7 @@ from listings.choices import price_choices, bedroom_choices, state_choices, bath
 
 from listings.models import Listing, FavouriteItems, Favourite
 from realtors.models import Realtor
-from .models import Blog, Category, Tag, Tweet, PropertyTag
+from .models import Blog, Category, Tag, Tweet, PropertyTag, Subscriber
 
 from django.http import JsonResponse
 import json
@@ -12,6 +12,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from django.db.models import Q
+
 
 
 def index(request):
@@ -79,6 +80,13 @@ def blog(request):
     latest_tweets = Tweet.objects.all().order_by('date_posted')[:5]
     categories = Category.objects.all()
     tags = Tag.objects.all()
+
+        
+       
+    return render(request, 'pages/blog-classic-sidebar-right.html', {'blogs': blogs, 'latest_tweets': latest_tweets, 'categories': categories, 'tags': tags})
+    recent_properties = Listing.objects.all().order_by('-list_date')[:5]
+    
+  
     recent_properties = Listing.objects.all().order_by('-list_date')[:5]
     
     if title:
@@ -206,6 +214,30 @@ def about(request):
     }
 
     return render(request, 'pages/about.html', context)
+
+
+
+
+
+def subscribe(request):
+  if request.method=="POST":
+     post = Subscriber() 
+    
+     email = request.POST['email']
+     post.email = email
+     post.save()
+     return render(request, 'footer.html')
+  else:
+     return HttpResponseBadRequest('Bad request')
+
+
+   
+    
+    
+
+    
+   
+
 
 
 

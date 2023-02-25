@@ -8,19 +8,19 @@
                     <h4>Contact Us</h4>
                     <ul class="contact-info">
                         <li>
-                            <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>20/F Green Road, Dhanmondi, Dhaka
+                            <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>Edmaks. Nairobi Kenya
                         </li>
                         <li>
-                            <i class="fa fa-envelope"></i><a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
+                            <i class="fa fa-envelope"></i><a href="mailto:sales@hotelempire.com">infor@edmaks.com</a>
                         </li>
                         <li>
-                            <i class="fa fa-phone"></i><a href="tel:+55-417-634-7071">+0477 85X6 552</a>
+                            <i class="fa fa-phone"></i><a href="tel:+55-417-634-7071">0713906025</a>
                         </li>
                         <li>
-                            <i class="fa fa-fax"></i>+0487 85X6 224
+                            <i class="fa fa-fax"></i>0777906025
                         </li>
                         <li>
-                            <i class="fa fa-skype"></i><a href="mailto:info@green.com">info@green.com</a>
+                            <i class="fa fa-skype"></i><a href="cyprian:info@wetende.com">info@wetende.com</a>
                         </li>
                     </ul>
                 </div>
@@ -66,20 +66,10 @@
                             <h5>
                                 <a href="properties-details.html">Beautiful Single Home</a>
                             </h5>
-                            <p>Feb 27, 2020 | $1045,000</p>
+                            <p>Feb 27, 2023 | $1045,000</p>
                         </div>
                     </div>
-                    <div class="media mb-4">
-                        <a href="properties-details.html">
-                            <img src="http://placehold.it/60x60" alt="sub-property-2">
-                        </a>
-                        <div class="media-body align-self-center">
-                            <h5>
-                                <a href="properties-details.html">Sweet Family Home</a>
-                            </h5>
-                            <p>Mar 14, 2020 | $944,000</p>
-                        </div>
-                    </div>
+                    
                     <div class="media">
                         <a href="properties-details.html">
                             <img src="http://placehold.it/60x60" alt="sub-property-3">
@@ -97,8 +87,10 @@
                 <div class="footer-item clearfix">
                     <h4>Subscribe</h4>
                     <div class="Subscribe-box">
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                        <form action="#" method="GET">
+                        <p>Provide your emal. to get the latest information about properties and household equipment.</p>
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            
                             <p>
                                 <input type="text" class="form-contact" name="email" placeholder="Enter Address">
                             </p>
@@ -117,7 +109,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-12">
-                    <p class="copy">© 2018 <a href="#">Theme Vessel.</a> Trademarks and brands are the property of their respective owners.</p>
+                    <p class="copy">© 2023 <a href="#">Edmaks.</a> Trademarks and brands are the property of their respective owners.</p>
                 </div>
                 <div class="col-lg-4 col-md-12">
                     <ul class="social-list clearfix">
