@@ -11,6 +11,8 @@ import json
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+from django.db.models import Q
+
 
 
 def index(request):
@@ -29,17 +31,29 @@ def index(request):
 
 def properties(request):
 
-    
-    search = request.GET.get('search') if request.GET.get('search') != None else ''
-    
-    if(search):
-        listings = Listing.objects.filter(
-            Q(room_title__name__icontains=search) |
-            Q(name__icontains=search) |
-            Q(description__icontains=search) 
-        
-        ) # Accessing foreign-keyed values upwards
-        
+    if 'area' in request.GET:
+        bathrooms = request.GET['bathrooms']
+        bedrooms = request.GET['bedrooms']
+        area = request.GET['area']
+        location = request.GET['location']
+
+        if isinstance(bathrooms, int) and isinstance(bedrooms, int) and isinstance(area, int):
+            listings = Listing.objects.filter(
+                Q(bathrooms=bathrooms) |
+                Q(bedrooms=bedrooms) |
+                Q(city__icontains=location) |
+                Q(address__icontains=location) |
+                Q(county__icontains=location) |
+                Q(sqft=area)
+            ) # Accessing foreign-keyed values upwards
+        else:
+             listings = Listing.objects.filter(
+                Q(city__icontains=location) |
+                Q(address__icontains=location) |
+                Q(county__icontains=location) 
+            )
+
+            
     else:    
         listings = Listing.objects.order_by('-list_date').filter(is_published=True)
 
