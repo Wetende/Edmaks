@@ -4,7 +4,7 @@ from listings.choices import price_choices, bedroom_choices, state_choices, bath
 
 from listings.models import Listing, FavouriteItems, Favourite
 from realtors.models import Realtor
-from .models import Blog, Category, Tag, Tweet, PropertyTag, Subscriber
+from .models import Blog, Category, Tag, Tweet, PropertyTag, Subscriber, BlogTag
 
 from django.http import JsonResponse
 import json
@@ -74,32 +74,6 @@ def grid(request):
 
 def agents(request):
     return render(request, 'pages/agent-grid-3.html')
-
-def blog(request):
-    blogs = Blog.objects.all()
-    latest_tweets = Tweet.objects.all().order_by('date_posted')[:5]
-    categories = Category.objects.all()
-    tags = Tag.objects.all()
-
-        
-       
-    return render(request, 'pages/blog-classic-sidebar-right.html', {'blogs': blogs, 'latest_tweets': latest_tweets, 'categories': categories, 'tags': tags})
-    recent_properties = Listing.objects.all().order_by('-list_date')[:5]
-    
-  
-    recent_properties = Listing.objects.all().order_by('-list_date')[:5]
-    
-    if title:
-        title = Listing.objects.get(id=title)
-        property_tags = PropertyTag.objects.filter(title=title)
-        return render(request, 'pages/blog-classic-sidebar-right.html', {'title': title, 'property_tags': property_tags})
-    
-    return render(request, 'pages/blog-classic-sidebar-right.html', {'blogs': blogs, 'latest_tweets': latest_tweets, 'categories': categories, 'recent_properties': recent_properties, 'tags': tags})
-
-
-# def recent_properties(request):
-    #recent_properties = Listing.objects.all().order_by('list_date')[:5]
-   # return render(request, 'blog/recent_properties.html', {'recent_properties': recent_properties})
 
 def shop(request):
     listings = Listing.objects.all()
@@ -219,16 +193,129 @@ def about(request):
 
 
 
+
+ 
+ 
+ 
+ 
+ 
+ # start blog views 
+ 
+ 
+ 
+ 
+
+
+
+#def home(request):
+    # Retrieve the latest blog
+#    latest_blog = Blog.objects.order_by('-date_posted').first()
+
+    # Retrieve the latest tweet
+  #  latest_tweet = Tweet.objects.order_by('-date_posted').first()
+
+  #  context = {
+   #     'latest_blog': latest_blog,
+    #    'latest_tweet': latest_tweet
+   # }
+
+   # return render(request, 'pages/home.html', context)
+
+
+def blog(request):
+    # Retrieve all blogs
+    blogs = Blog.objects.all().order_by('-date_posted')
+
+    context = {
+        'blogs': blogs
+    }
+
+    return render(request, 'pages/blog-classic-sidebar-right.html', context)
+
+
+def blog_detail(request, blog_id):
+    # Retrieve blog with corresponding id
+    blog = Blog.objects.get(id=blog_id)
+
+    # Retrieve tags associated with blog
+    tags = Tag.objects.filter(blogtag__blog=blog)
+
+    context = {
+        'blog': blog,
+        'tags': tags
+    }
+
+    return render(request, 'pages/blog-classic-sidebar-right.html', context)
+
+
+def category(request, category_id):
+    # Retrieve category with corresponding id
+    category = Category.objects.get(id=category_id)
+
+    # Retrieve blogs associated with category
+    blogs = Blog.objects.filter(category=category).order_by('-date_posted')
+
+    context = {
+        'category': category,
+        'blogs': blogs
+    }
+
+    return render(request, 'pages/blog-classic-sidebar-right.html', context)
+
+
+def tag(request, tag_id):
+    # Retrieve tag with corresponding id
+    tag = Tag.objects.get(id=tag_id)
+
+    # Retrieve blogs associated with tag
+    blogs = Blog.objects.filter(blogtag__tag=tag)
+
+    context = {
+        'tag': tag,
+        'blogs': blogs
+    }
+
+    return render(request, 'pages/blog-classic-sidebar-right.html', context)
+
+
 def subscribe(request):
-  if request.method=="POST":
-     post = Subscriber() 
-    
-     email = request.POST['email']
-     post.email = email
-     post.save()
-     return render(request, 'footer.html')
-  else:
-     return HttpResponseBadRequest('Bad request')
+    if request.method == 'POST':
+        email = request.POST['email']
+
+        # Create a new subscriber
+        subscriber = Subscriber(email=email)
+        subscriber.save()
+
+        return render(request, 'pages/blog-classic-sidebar-right.html')
+
+    return render(request, 'pages/blog-classic-sidebar-right.html')
+
+
+def blog_search(request):
+    if request.method == 'GET':
+        query = request.GET.get('q')
+
+        # Retrieve blogs that contain the query in either the title or content
+        blogs = Blog.objects.filter(title__icontains=query) | Blog.objects.filter(content__icontains=query)
+
+        context = {
+            'blogs': blogs,
+            'query': query
+        }
+
+        return render(request, 'pages/blog-classic-sidebar-right.html', context)
+
+
+def handler404(request, exception):
+    return render(request, 'blog/404.html', status=404)
+
+
+def handler500(request):
+    return render(request, 'blog/500.html', status=500)
+
+ 
+ 
+ # End blog views
 
 
    
