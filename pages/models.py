@@ -10,12 +10,12 @@ class Blog(models.Model):
     author = models.CharField(max_length=100)
     date_posted = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='blogs/images', blank=True, null=True)
-
+    
 
 #Category model represents the different categories of properties, such as apartments and houses
 class Category(models.Model):
     name = models.CharField(max_length=50)
-
+    
     def __str__(self):
         return self.name
     
@@ -24,6 +24,7 @@ class Category(models.Model):
 #The Tag model represents the tags that can be associated with properties, such as business and real estate.
 class Tag(models.Model):
     name = models.CharField(max_length=50)
+   
 
     def __str__(self):
         return self.name
@@ -32,8 +33,11 @@ class Tag(models.Model):
 class PropertyTag(models.Model):
     title = models.ForeignKey(Listing, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
-    
 
+#BlogTag model is to associate Blog objects with Tag objects. 
+class BlogTag(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
 # the Tweet model represents the latest tweet that will be displayed on the site.
 class Tweet(models.Model):
